@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Top of the Class – Pre-K</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sun: #FACC15;
+    --sky: #38BDF8;
+    --grass: #4ADE80;
+    --coral: #FB923C;
+    --purple: #A78BFA;
+    --red: #F87171;
+    --ink: #1E293B;
+    --soft: #F8FAFC;
+    --muted: #64748B;
+    --white: #ffffff;
+    --radius: 18px;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--soft);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid #E2E8F0;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 22px;
+    color: var(--coral);
+    line-height: 1.1;
+  }
+  .nav-logo span { color: var(--purple); }
+  nav a {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    margin-left: 24px;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--coral); }
+  .nav-cta {
+    background: var(--coral);
+    color: var(--white) !important;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 13px !important;
+  }
+  .nav-cta:hover { background: #EA580C; color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #FFF7ED 0%, #EFF6FF 100%);
+    padding: 72px 32px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 220px; height: 220px;
+    background: var(--sun);
+    opacity: 0.15;
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -40px;
+    width: 280px; height: 280px;
+    background: var(--sky);
+    opacity: 0.12;
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: #FEF3C7;
+    color: #92400E;
+    border: 1.5px solid #FDE68A;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+  }
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(36px, 7vw, 60px);
+    line-height: 1.1;
+    color: var(--ink);
+    max-width: 720px;
+    margin: 0 auto 10px;
+  }
+  .hero h1 .accent { color: var(--coral); }
+  .hero h1 .accent2 { color: var(--purple); }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--coral);
+    color: var(--white);
+    border: none;
+    border-radius: 30px;
+    padding: 14px 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #EA580C; transform: scale(1.03); }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--ink);
+    border: 2px solid #CBD5E1;
+    border-radius: 30px;
+    padding: 14px 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.1s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--purple); transform: scale(1.03); }
+
+  /* BOOK CARD */
+  .book-showcase {
+    padding: 64px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+  .book-visual {
+    flex: 0 0 280px;
+    min-width: 220px;
+  }
+  .book-cover {
+    background: linear-gradient(145deg, #A78BFA, #7C3AED);
+    border-radius: 12px 22px 22px 12px;
+    width: 100%;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: -6px 6px 0 #DDD6FE, -12px 12px 0 #C4B5FD;
+    position: relative;
+    overflow: hidden;
+  }
+  .book-cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--coral);
+    border-radius: 0 14px 0 0;
+  }
+  .book-cover-star {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+  .book-cover-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 22px;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .book-cover-sub {
+    font-size: 13px;
+    color: #DDD6FE;
+    font-weight: 600;
+  }
+  .book-spine {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 16px;
+    background: #6D28D9;
+    border-radius: 12px 0 0 12px;
+  }
+  .book-info { flex: 1; min-width: 260px; }
+  .book-info h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 32px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .book-info p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .book-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .tag {
+    background: #EDE9FE;
+    color: #5B21B6;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .tag.orange { background: #FFF7ED; color: #9A3412; }
+  .tag.blue { background: #EFF6FF; color: #1E40AF; }
+  .tag.green { background: #F0FDF4; color: #166534; }
+
+  /* FEATURES */
+  .features {
+    background: var(--white);
+    padding: 64px 32px;
+  }
+  .features-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(26px, 4vw, 38px);
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--soft);
+    border: 1.5px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 28px 22px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .feature-card:hover { border-color: var(--purple); transform: translateY(-3px); }
+  .feature-icon {
+    font-size: 34px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .feature-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* COMING SOON */
+  .coming-soon {
+    padding: 64px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .product-card {
+    border: 2px dashed #CBD5E1;
+    border-radius: 20px;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--white);
+    transition: border-color 0.2s;
+  }
+  .product-card:hover { border-color: var(--sky); }
+  .product-badge {
+    display: inline-block;
+    background: #F0F9FF;
+    color: #0369A1;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    width: fit-content;
+  }
+  .product-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    color: var(--ink);
+  }
+  .product-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .product-icon { font-size: 36px; }
+  .product-preview-img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+  }
+
+  /* EMAIL SECTION */
+  .email-section {
+    background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+    padding: 72px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .email-section::before {
+    content: '⭐';
+    position: absolute;
+    font-size: 80px;
+    top: -20px; left: 20px;
+    opacity: 0.15;
+  }
+  .email-section::after {
+    content: '⭐';
+    position: absolute;
+    font-size: 60px;
+    bottom: -10px; right: 30px;
+    opacity: 0.12;
+  }
+  .email-section h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(26px, 5vw, 44px);
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .email-section p {
+    font-size: 17px;
+    color: #DDD6FE;
+    max-width: 480px;
+    margin: 0 auto 36px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .email-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .email-form input[type="text"],
+  .email-form input[type="email"] {
+    flex: 1;
+    min-width: 200px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 30px;
+    padding: 13px 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .email-form input::placeholder { color: rgba(255,255,255,0.65); }
+  .email-form input:focus { border-color: var(--white); background: rgba(255,255,255,0.22); }
+  .email-form button {
+    background: var(--white);
+    color: #7C3AED;
+    border: none;
+    border-radius: 30px;
+    padding: 13px 28px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+  .email-form button:hover { background: #EDE9FE; transform: scale(1.03); }
+  .form-note {
+    font-size: 13px;
+    color: #C4B5FD;
+    margin-top: 14px;
+  }
+  .success-msg {
+    display: none;
+    background: rgba(255,255,255,0.2);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 16px;
+    padding: 20px 28px;
+    max-width: 400px;
+    margin: 0 auto;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--white);
+    padding: 64px 32px;
+  }
+  .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .testimonial-card {
+    background: var(--soft);
+    border: 1.5px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 24px 22px;
+  }
+  .stars { color: #FACC15; font-size: 18px; margin-bottom: 12px; }
+  .testimonial-text { font-size: 15px; color: var(--ink); line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+  .testimonial-author { font-size: 13px; font-weight: 700; color: var(--muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: #94A3B8;
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 24px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .footer-logo span { color: var(--coral); }
+  footer p { font-size: 13px; line-height: 1.7; }
+  footer a { color: #A78BFA; text-decoration: none; }
+  footer a:hover { color: var(--white); }
+
+  /* FLOATING STARS */
+  .floaty {
+    position: absolute;
+    pointer-events: none;
+    animation: float 5s ease-in-out infinite alternate;
+  }
+  @keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-14px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Top of the <span>Class</span></div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#signup" class="nav-cta">Get Updates</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-badge">🎓 New Educational Book Now Available</div>
+  <h1>
+    <span class="accent">Top of the Class</span><br/>
+    <span class="accent2">Pre-K Edition</span>
+  </h1>
+  <p class="hero-sub">Fun, colorful learning for curious kids from Pre through Kindergarten — where every child becomes a star student.</p>
+  <div class="hero-btns">
+    <a href="#signup" class="btn-primary">✉️ Join the Community</a>
+    <a href="#about" class="btn-secondary">📖 Learn More</a>
+  </div>
+</section>
+
+<!-- BOOK SHOWCASE -->
+<section class="book-showcase" id="about">
+  <div class="book-visual">
+    <div class="book-cover">
+      <div class="book-spine"></div>
+      <div class="book-cover-star">⭐</div>
+      <div class="book-cover-title">Top of the Class</div>
+      <div class="book-cover-sub">For Grades Pre through K</div>
+    </div>
+  </div>
+  <div class="book-info">
+    <h2>A Book That Makes Learning Feel Like Play</h2>
+    <p>
+      <strong>Top of the Class: For Grades Pre through K</strong> is an engaging, colorful educational book designed to spark curiosity and build foundational skills in young learners. With vibrant artwork and thoughtful lessons, every page is an adventure.
+    </p>
+    <div class="book-tags">
+      <span class="tag">Ages Pre-K to Kindergarten</span>
+      <span class="tag orange">Full-Color Artwork</span>
+      <span class="tag blue">Foundational Skills</span>
+      <span class="tag green">Parent & Teacher Friendly</span>
+    </div>
+    <a href="#signup" class="btn-primary">📬 Get Notified on New Releases</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <div class="section-label">Why Families Love It</div>
+    <div class="section-title">Built for Little Learners</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🎨</span>
+        <h3>Vibrant Artwork</h3>
+        <p>Every page features colorful, engaging illustrations that capture young imaginations and make learning irresistible.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📚</span>
+        <h3>Curriculum Aligned</h3>
+        <p>Content designed to support Pre-K through Kindergarten learning goals — letters, numbers, shapes, and more.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌟</span>
+        <h3>Confidence Building</h3>
+        <p>Activities that celebrate effort and progress, helping every child feel like they truly are at the top of the class.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">👨‍👩‍👧</span>
+        <h3>Family Friendly</h3>
+        <p>Designed for parents, caregivers, and teachers to explore together — making learning a shared, joyful experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING SOON PRODUCTS -->
+<section class="coming-soon" id="products">
+  <div class="section-label">Future Products</div>
+  <div class="section-title">More Learning Adventures Ahead</div>
+  <p style="color: var(--muted); font-size: 16px; max-width: 560px; line-height: 1.7;">
+    We're busy creating more resources to support early childhood education. Sign up below to be first in line when they drop.
+  </p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-badge">Coming Soon</div>
+      <div class="product-icon">📓</div>
+      <h3>Activity Workbook</h3>
+      <p>Hands-on exercises and fun challenges to reinforce the skills from the main book.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-badge">Coming Soon</div>
+      <img class="product-preview-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAKYCAMAAACYUHZaAAAA/1BMVEUAAADzoR50MOLcWgr9/P2ni/n5zBUWZTT3cHAVgD0WokoixV5bIbb64Jnzq5rxpVz512PfqeKMzaOo6/yYXOiKspn1nQ9emW3Pc+PyoR0Zal+NOOfzoR1pzo90MOPbWgoclqriWgd0V+puK+R0MOPbWgp4ivE+3ticqFSki/xprI4RnUxn1eqt1mT8bW3edJT80RIWZDQVgDymivn4cXH5yxUVZTMQgSoVZDQVgDyni/n4cHD5zBVcbjVciT04s80AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAByv0rGAAAAQHRSTlMA/v7+//7+/v7+/v7+////////////FP//pP//X/+kpP8a/xtfX////xb/Ef//Gf8ZpKSkpKQcGF9fX19f////FxdnagAAJyxJREFUeNrt3Xtf2krXBuAAAdF2kqAItbVaT32r9vF81r339/9WL6iQ05ySWSshcN9/Pbs8vwjhYs1iMhk8D0EQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBGHMwcl+xyn7B/o/cLzXdsrekfbwV2/3PafcX2mP//B0veaU6wft8S9e7/pOubvQHv+I+fwrWXXco6N13HaP5qWN3nru0dF6WnOPhtbFa989GlpHzOdf6Wq/Q5IT1R/Ya5PkWFWu7nskeVOVq+s1kjypXN31SfKqcsV8/pWuOlRRyGpTRf7KrnpUkct6WKOKXNZFnypyWUfM55+7Xill7bVZX9novscr63qNVRZVvVLJOmI+/8qcdAhzwNNfzSN5/m89wlzx9FfzSPqs1z5hLpjP/1EdA+F7B884EL53kIwD4XsHzzgQvnfwjAPhewfPOBDKz381BUtSskg/MJKPDGnBkpQs0oIlKVmkBUtSsrjPvzL7Hd6SlRzhh0P6j8x9j7dkJTus7wwl667PW7L22jWVrNhEPwyC0FmWeiQcdicZUndZsYlICBE5y8oePzYx3t7ePnO2lT1+bCJ4j6ss/fkfHjJ0uQZY4ccLY4P17spdlhLW1NUkbLCmrib5zgUrYIb1ef6rh/X5wkIuWF1mWB+unGuWEtaHq+0xM6yACxbT+a8d1ucHxvkjUxes75+wzgALsDhgoWKV7LH6TR0KI+ah8AywysHqkBSsTtXNYy9dsiK25v07yUhYX/N+2GX5Vm4BqxOG7rMNuumGYZdgIksNqxdNwjjdsDY+G4/X+KYb+hSuNNMNkzeA4fzbwCIJ6xUdPSySaGCRRAOLJFWff8ACLMACLMACLMACLMACLMACLMACLMACLMACLMACLMACLMACLMACLMACLMACLMACLMACLMAqAmu+aNZqeanVC+tKY7UOrTCsKBL+Z2wWmNrA+v65TDmO/RJAO1iBKaErrMOuNsMKYA38eVpEsHxlBqbFs8VgxajmEQSwtqTPXfwZU8Ea+IYErrB+64//jR9WP3nq2GFNbQ2pYEXyPyCYYL3bAixbWEHy71UBS/OqisESyj8QccGa5A9g2cFK/b2wElg6WfawdH8g4oPli38AywJWP33SqoHlD91h6f9AxAdLX7QASzYSWrTvNLD8H66wTH8gYoSlkwVY6ZFw1q9EtLCGyXRtSpYlrFR/9TnLkP6KSAFLjD9ydpah9i8VLLbpht/xdyVpuGHNRsLWwHIsLAbrR2ZuJf5q6AYrUtSmyPjdsBis1OSWVZ9VEFbINUH62+abEiOs2SvsXFqOhS6w2u35B3/wwwmW2o8wlKzSsCb//DfxLQewrEbCKPm/GGENjU2WFaxIU5eEvstygLW2lmhc/gEsXRJ1amA3leUG65AGlrYs6cdCJ1hr/xlLFmClR8KO7VhIBMttKNR+94sS/Tw1rHg0VHVZgJVs3aPM/64AlkvzHun7KO2laDdYa978T3uAZZ7EamWqFxusbuF5FO1IGPEsm9HAWvtrGAsBK3k5J9tvccE6pJkgNc1VccL65asfAyzJSBj/l2CD1bW4WLjosOLH/gEsq5EwHgtbdLAG8dKy5FUMZeveAFh/9U0Wycx72HBYmcUylzZLHCiuFWpc2cCKLNf0scBao4WlWEDRbFi574E2Y+ECLPSrF9ZvwDLByg19NmOhM6zhj3ajYf3XMFiDQkveSWDlCtSlxVQWwVA4GP4ArMpgycMJS8LIYixcgIV+GAoXG5Zk4LMYC4kW+n1D876ssPqSGygC81josNBvmJxyGDYUFvF0g5DPNzQZVqD7u2zXCrdMshozQeo3ZIK0cljav9tigpVc6tdMWJ7fsJn3qmH19YM8GyzT5cJCsGq4CD3/Uhg15FrhoNCSd3dYgV+uZLnCiktWeVhC32RFImKDFY+EWN1QYiTUXNZxhtXVN1kE67G0fb0jrF+mtcmrDqtvgCUWGZbFClLlGlLHFaRbhlUzKw9LeXndNBbSDYUOsKzWvMs7MCdY338b71lddVi+asbKN0xl0TXvDrB6mvtSDbesusBKuBK4S0d7OSdfmALDWEg23eDQvKduhFa6Ih8Kk/cVerivUDsSCnXz1WKZIDXeC215i33Nd0JHa4Clbd2jAoMk7SUdl5n37J5r7Hs3jM+2tyx3MiLau0F5VWexYela9EB/WYfoIrRyFantbjOixt1mdDtkEe02o7wOvdiwdJMKhrGQCpbDRWgbWZz7Y2l3XltpWH3tNKh+KosIlus2RgZZjd/Rr5mw9JNV+rGQBNaAYEc/5d62+ovTDdmDtJmw9DVJX88oYDkuTTYVrYhv12T/zz9rgKWC1TdcENS6c4alv0mn6A8IRMVYucHarG6f92bCmn2jNfxURfmKpfw9BMMtOu0yP3kSCZGZd6D/ZYrtbdufprCDFZhD9csUw0onSPFbOjpY+C0dwAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAKsRsLap3W1nz3+Hu3r2sse/57W1X32+Ne0rq6zx7+jdXVX9flX5oAW1kn2+Ee0L+w4e/wrWlhv2eM/0MJ6yh7/ghbWa9Xnv6qSdeDxfmSOPN6SdeXxlqwHj7dkXVR+/qspWSf54x8xf2CuWAsWccl6yh//grVg8Z9/dU4IO6yR5PjHzCP8G2GHdSU5/hNhh/UoOf4rY4dVxfmvQtaBx/vK5IX4jXEgpJX1ID3+K+NAWMX5Z5e1f6A4PtEr21O9rjfGekUo6/pBcXwiWXcXNZ1/TZ9F0cGfjJTHP9rjHd+vKDr4tyvl8R8oOvinR+XxL+54+quqzj8jrf2TA+3xXV/anuFludK6fxtpj+9K6/pJ//xdad29eszn/8hDEARBEARBEARBEARBEARBEARBEARBEARBEARB6stod6fllB39OrnH55t1p9w81vr8T19uu065PdU//5N9pmXhHzn3vA2nTI9QhlXLPZq35vx53T06WszP//Sl6x4NrYMTzjsOpqw23FOC1minRZJd1eu6WSfJs+oFMD//09suSV5UrvbZbuqkczWlVdRViyryd+Z8nSoKWczP/7RLFbmsA87bhafnf4Mq9dQr1TtDVa+UspifP1W9Usk62Ge9EZ2sXhWWtdsijKRPeV4nzGP1z/+lSxhJn3XCu3WGR+hqY+O8joHwvQPOfx+kdLV+U/nzP6V01b3NP3/eXaQIB8KCJYv0Ay/5yJMWLEnJ4n7+pAVLUrJIC5asZJHCKlCydlq8H/lkh7WxQV+yks8/DOmf/22Xt2QlO6wWR8naqKlkxec0ioSInN+Z7PFjE+Ptzc0zZ1rq5x8KIYKQ+vknUPi+P3CWlT1+bCIMg8nTp96qMzYx3tzc/FmdrNiVmCZigzV9XZub2xtcsML35y9CNlj+e9hgTVgFBLKUsD7O/2ZdsJxlqWBtbH+8sDETrE9XfLA+XDnXLAOsIOSC9XH6J2NG1bAEM6zZC2OGFTQUViuoBtZPwAKs5YD1ORT2uHqsM96hsMU9FA4q6bECth7r5+f5rxzWhyy+5v2jyTpjbt6DFm/zPmCD1QopCpbmWyFJwSoDqxVFUY9xumFjfDYerzNON4QBwUSWZrqhO3CfbdBMN3TC0H22QQNrY/zz53ijDlgkUcOiSdXPv0scDSyWn5zZ2KhphhSwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwAAuwJImEP4uIIhJYG5/rlDf/FHmoLKzgc9Wy4IPlZzJwghWo17+Hs8dUa5htYX2uVN78Xz2wQpE9Zb5h9bIdrK3ZwYo8VBbW/KmHlcHyXWD156c6Ty5+GxxhzU9zHbBCX54IsOqBZXbVCFjCV0VzLw9g8cGycNUAWKGvSw+wKodl42rxYeldqWUBFhcsK1cLD8vkSikLsJhg2blaeFjpZr33ed9hqs8CrOQdh+9hhGXpatFhCVWjbvxuuJqwcpWLGpatqwWHFar5RIaSBVgcsKxdLTgsXVmK9F0WYDHAsnfVFFhCOUyqJuABix5WwhXZtcJaYAl9UcIEabWwYldRp9mwrK7dAFZFsAq5agisHmDVDquYq4WGFRqmqgCrQlgFXS00LOEwEgIWLayirgDLGMCawAqLumoGrB5g1QsrMVHdWgJYPmAtBqz0pdmlhWW3wAGweGAtQ48FWIsIawm+FQLWQsKya7MAC7DsYEXFZDXwWyELrM1cAKufLlNhoQa+gfNYHLAwQaqH9U5paS5CKy7piHkAqyJYn5AGBWQ1ApZveKcAq6KFfgXarEavbgCsimEVmIFvBiwBWIux5t2+gV9oWKGhZAGW6rcxK7hLJ1raNe+AlUE0qABWx3YGfrFhCb0swFLA2iLZH0t+J7Rlm7XgN6zqbniOMI+VVuRrixgVLMsGvjl3QmemSSNMkOY3bFD9AzYFsdq7oRVFAjPv0p1ABpn/5oBlN09aFJb/UxZvzLaNkfkqsXzl8ip9K1SemQELLKsGvjAsef7Utj8WNgVRwxp0eWD1LdqshYdlqlkC+2MpZXWZYNk08A2ApdmDVHMDz2rNvBd2tXC7JtcBSzkc6nbkXrFLOkVdOcIyt1mNgKXY572HG1bVtAZdVlhGWQ2BNbUVzzEIAyp7WEv1yxT2qtx/mSLx0xRhi+KXKRQZ88PiuK8Qv6WjhYUfaQIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswAIswGKBtUP7vuxkj39D6+qm6ud/S+vqNnv8fVpX+x6vLGtX3oj2jdnNHv+RFtZz1c//lBbWS/b4B7SwTrLHP68LFvFHfuTxlqzHyp8/bck69XhL1oHHW7LOaypZu/njP7IWLP7nf8pasIhL1kn++Oc1FSzP2yXsUEaS4z8TdliPNTz/F8IO61Ry/BPCDkv2/L2aXFG+M9LXRSjrnPn5y8/PC+NASCvrQP4C6hgIKd+ZnZHi+ESybs6Zn7/q/Lww1itCWfsHqhdAVK+Kupr0KRQd8O5IefxHig7++bG2539K0cG/nCqPf0DRwZ+on/+5V/04SPTW7GjeFgpaN8/nzM9ff35cad1qWFHQ2j/Rn39XWl6JcoUgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCILQ5eBkn2tZ7CxfnWI4+Gh3h2lZ9TxfnFL3+T/eaztl76iUqxPWFdfOqky0RrucK/aniye/uEfLivn8H7fdU4bWPttNbXSuNLRGO2w3FdK50tA64D7/e22SHBd1xXm7JB0rpawR5+2qU1dfqKJwxX3+21Q5rqVeqV/ZV1ZZox3WG6HJ6pVK1gH3+d9r1yOL8EZc+R2TX7+yyiK8EVp+x+2XL6yyuM//cZswRb4PMu+iQ+rqK+dAqLhn9QsvLPbzT+mqvVdTwZJ9ZL7yyiItWLKS9YVXFvf5Jy1Y7fZRHR2W/CPDDIt74zVuWNznP9lhDYcVlqz4OfXDIAjJtyqMTQy73e6QXFZsIoyEiMj3BYlN/Nzc3PxJLov7/CdYTe/IHlbWZcWvK3gPG6zhx73mbLBC8R42WFNXk7DBCnnOf9qVu6zisD5eV9DngvW5icGQC9aHKxFywfpw5VyzTOc/5ILVrRlW2HBYEWBJYQ1n25MAFmAtB6yQeSgcMsOKmIfCn8ywmM5//UNhh+QDo/lWSOJK862QpGBpvhWSuPpS9fnPNu/Vfyucft91/7argfV1OBweMk43tMIobDFON3z5+fOnxzjd0Ak5zn9yFqtLMJFV/dIGMyyWGVLunzz58oV3hpT7/LeJA1iABViABViABViABViABViABViABViABViABViABViABViABViABViABViABViABViABVhFYH3eB6a6GSnxaFgWVjv+6VFP9diQCFYohP8Zm/WldrC8TVls1gEWhhUG8fMPWySwhoqfgR1aLAR0gDXw4+Tp9BOPitKwtubHGOQemz1CASv0sxEksP7PV2XTo4Qle/7usLq+OoPhjypg5elcEsPyPT5Ygfzc9ThhTc6KRwUrlB+/xQlrEi0tIlh+QXYlYPlcsEL1W88Ky/f/RwKrr37+vLAmVYsfVm4s9MlhXfLACnSnjheWLwhg9bXPnxXWpGixwxKakZAIVmYwJIIV6M9cjxWWpmbZwjI8/xYvLP8HNyy/iLqSsAYMsALTmeuxwlLLsoTVN/2BFi+sATuslnokpIKVLlkksFL91WyWIbQZDQvCEj/n2dyyGQztYKVciVDWy1PAGqRmGwY2gyEZLKH5IFHBGpDDShw8Uvy7IIGVrkx/zSXLDlby+SdP/0D+72VhfctOcJlLFgGsgeSTEaQeooKVKlkUsAJlYQpMg6ETrC9e/L67wAqUI0ZgGgydYLUPY1g/2GAFkuf/CYoalk8MSzPgBYaS5QYrrlnCBZZGT2CYdHCDlahZfLD6klL8OQdBBWuwlZ9yIIAV6KqS0JcsR1ieaZrUBtalrioF+pLlCOvQ1GQRwOrku8RZESODdZgfDAlgyfur3KOCA9YWAayBtijpuyxHWPFYwghrkPtgDNKPuMOav44BIaxQ/80v0D7sCOvL/I0pD6uvr0mB9othE2DlxsL+zBMZrK/5kuUOKzB88dOOhVQVywHWpeHSjdZdE2B1si/vcvZ6yKYbvn7tZkuWOyz9SGh4fAGGwkC9tiQ9UkacPRZf897KjYWDtDgSWLmSRQjLNCsvOJv38t8KB4bZ9aDIPGJBWN0KphtaswoVZUdCSli5ksUPK2SE9ZdgHss0ud7ngxXPNnxrM8Lqp5//5bxAU8JqZ0qWM6zQuDpGJ88N1l+KmXfT6pi+Tp4TrK75KjQJrE66JA+y/04C6+vvtKQmw/prXu1nsTTcuOyKDJb6WuG3NiusINVExi+XFFY7PUvaLFiJi9A/t2hWN1QIS7244QcvrNRYmJh9IIWV6d+bBavwSr9mwGJd6NeKX0JmJCSG9TU1S7oUsLxGw2JemtzqpMfCxKslhpUqWcsAy/vSZFjcN1O0UjMMqXl4YlipKQe66QZRwXRD4dt0CL4VssKq4PavVic1Fgb5fyWDlZxyaNY8luzOQtf7Cqubx5LkG/8Nq610Y5Vc90cNKznlkHusPKyeYeY9oocl/ud+J7RpXfslGazEdINF304Kaz4Apq5Ik8NKTDm4wxIVXisUDLfYDwzXCgOOa4Vb5pkGUljzlv0y/4+EsBL9uzss69UNHMtmCGAFdaxuGFoOhmSwMkuwOkyw4oVZ7rAMY2HAudCPApZhPVafZz2W5WBIBmt2gTBVfOlhJUpWlw6WKL6+dAFgGdaI6teXloZ16FsNhmSwOrK7DBlgxVMO7rACnR2h/9K4CLC0y9r7XGve7UoWHSzZHiEcsA599Z075e/S6anXLUcLC6uvuxOH7y6dLfMN9pSwZPsWccD62qWDFfgqPoHpVuhFgJX4MAv1Q+T3FQ7NN9hTwupI7rdngdWmg6W849n3TeuWFwJW3+JOdEF/J7TNYEgIa5DfL4AFVnYw5N27QbQWGFZqr5lQ/s8telg2/TshrMv8h4QHVub+aKfdZkLjbi0LDSuzgUYQTpLeQCfs0MOymcwihNXPvxgeWJmS5bY/VljO1aLA6hg+F1GHA1bioz3khxV/ejrMsNL9u+OOfjpZorXwsDI1K5OwwwOrkk1BWtmLnoId1iEhrFSnnvm4txoAS7enX9hhgpXo37/xw+rnXg4XrFTJct81OSy8te0iwVLu6ifIdk3W3bCqGAwpYXVyO2WxwWqTwpr+egDzPu+csOT7cRs2ene9xX5oGAwdYPVzv0rRz/4OBdUvU+R/feIw/pmERvwyhccKa3rqfdmukUS/TCErSvESLWpYbrGChd/SKXT+A6tB0B4WfqQJsOzWlAIWYJU6/wVKFmABlv3575snRgELsEqc/wHpr38BFmDJprTE9Bu5ACzAIviF1fwFHsACLIqf7gUswGKB1QcswGL5sfE+YAEWz6/YB4AFWBywkhOlYQhYgEUGq8T5ByzAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAixp9mlf177HKyt3+B1aVzser6zKz/8eras9a1gHtC/spGpYI1pYu1XD4j7/R7Swjr2aSpbkD/DCIi5ZI49XFvf5P/B4S9aRV0/JOmGGJTn8iLdg0cKq4fwf1VSwPO+EcIQfeayypM9/l7DDkj5/Vlf85/+4jg6L+JUp/gAvLEJZI/kf4IVFeP4PpMc/rmMgpHxl+8o/wMmKTtbOSPUHOFkRnv8DxfGJZO0VdTUZ5yk6yJOR5i9wupr0WRQd/K7u+XO64j//R3tV91dkL23/xPQX2FSR0NrRsnKn5XnnzOf/QHt8V1p75VghCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgCIIgRLl6u+855f5Ke/yHp+s1p1w/aI9/8XrXd8rdhfb4R8d7rMt6R7s7XMuq3/P4fLPulJvHMqxGbz336Gg9rblHQ+vite8eDa2jY94V46Nd1hX73vnzuntK0Lq675HkTVWurtdI8qRyddcnyavK1R7vTXmjHb6bIt9d3ayT5Lmoqx5V5LIe1qgil3XRp4pc1hHz7Z4j1tttJ67WqVJM1ui+xyvreo1VFlW9Usk62uO9kXi0w3sjN1W9KizrrUeYK57+ah5Jn/XaJ4ykzzpm3vpgl3nried1wjzWMRC+d/CMA+F7B884EL538IwDofweddrdcvK7MD1Sulq/qalgSUoWacGSlCzSgiUpWaQFS1KySAuWpGSRFqwiJeu+x1uykh3Wd4aSddfnLVncG5dxbxyX7LA2NiosWbGJSAgROcvKHj82Md7e3j5ztpU9fmwieI+rrOzxYxPDbrc7PKTeajE2EU3egIh8q8vYxHh7c/PMmVZxWFNXk7DBmrqa5DsXrIAZ1tTVJGywPs5/xAZrvDnN9kblsD5cOdcsJawPV9tjZlgBF6wPV90hLyxnWSpYG9vvsDbHywbr+yesM8CSwxLMsD5cbZ4tKyxUrFWDFTEPhWeAZTMU9rh6rLO6hsIeiSs1rO8kI2F9zfshiSvdt0Le5v2jyTqrvnmf1KxJGKcb1sZn4/Ea33RDn8KVZrqhPZykzQerNT39jNMNG9Pzv75eAyySaGCRRAOLJBpYLD8Zwv2TLevEASzAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAizAAiwHWJEQ/izCvBLQCtb3z3XKuvxxgDVbphyEmsfKw+rO8kP26GFXt4pZA0vIl72Hs3/PLluOZP9/G1gbvz4XwG/+yT/2uYR5c/tfTlixqQQuAlhbvjHin/KwBrODSGD5msdsYc0O8U326Jb2UQ2s+TNLA0p8rtOwpP9sVbF+zQ+ZlbXxd/ZIxFixhOItX3VYh7NDDGSPzv/ADxpYiXOSeiCcEygMa+O/+VlWkvuXD5b6TY9WG5bWjl6ddiiUSlHCEuVhJQrTH6t/J4Wle9dXHJZuLJw/NiwKK5SObWHyAy2F1SvRvCsqk7KSEcLSv+2rDUtXlfQjofZboRRWsh8Rxv+3Lax4MEz2Ur/m78uYDVaU6tenEcJmMFwJWHGD/qPgSKiFJa1BqZMigxWVmm6QDXrxv4V80w1SQ8JcsuzmsTbGifyeW0r+63htgWGpx0LDSKiFFRph9Qz/5wLzWPPBUPyr+SdyWJFcUGQsWSUmSOevJ6SaIGWHpa5L88O3HWBF8hYr9YBwhJUfDDe2TJ07JaxIMQMhVhqWciw81E5imWbeJW2TUMFSTG7Zz7xnB0PjFBYJLKEa8kzTpCsCSwWoq2/dDbAkVWh2vnOK5C1WkUs6v9JfAW0GQkZYwnBZZ0VgtRVjoaF1N8AKlbCi7AOKFqsIrHgw/GM1hcULi+EidCNhyUuTcSQ0XITOlaGZnxYDrISlfxNTWNF6JbAEYOnHwmGhkdASlsj4Ea2sOCFvsYqtbvgVY5pPYWkHQspvhRFg2Y+FW6aR0AArx0XMPGWbLEWLVQxWYjC0GwhJ57GKbca2MrBkxenQMIllhJUb4Ob/GcofyI6EBddjxYOh8VoOFSxRYKnMSsKSITKPhKaFfrawQhpYiWuG+kUNPJd0iuBaGViyYc88EtrCijItVivTZKlarKKw4sHQdC2H7CK0bDGWxR6lqwMrX54OzQXLBCsDRsSa0g+oWqzCS5PTg6GoYmmyaplfBFiKsbBrLlgmWJkhLsFHyB7IjYTF17ynBsM/lax5j0qs81shWPmBb8s0iWVxM4UUVi9BjhpWsmSZCxbRmnfhF16cvEKwDjPXm21GQmtYUWp6NFO95g+IVhMr1sc9OhwL/ZYDVjszFv62GAmNsFJNVmrySvJAvsUq3mOllsaJf6uCpbIlACvuqb6lR8KhC6xQ4idKkdOOhIW/FWYmsqKKb1iNcroiwMqOhTYjofmG1aSZFJ8w/4A7rNw81p9qYUlKF2DFNepHktmgzQMr8V/qFqvozPtW5TPvxm4+agKsgBdWaizs2oyEZliJ9ilM84kfULdY7tcKw3r2bohMXdZKwUoVKcOaZFtYiWok0nziVl49EpZc3SDMd6pybwoSNQqWyD10OT+BFJuCJMbCQ4tJLKtNQWI1GT7x5IPspp0y67ESd3tt/Gc3GPLtNmNoshYCVlAVrN+xpq5N604Cq6dpscqtIA1tb6WggPV+I2HxtaULAUujR1PMymxjFI+FWzatuw2seQMVZvlkYUVusDKL3KtY8z7//hc1HVZg/Ug5WPM6ZTkSWsAKM7Ci3Pp3oW6xFvwunUgz3jWhx4o7dF9VsBS9e1FYM0/D33Yjoc3Ga/OlJFk+In1jhe+28Vot9xWqv/s1onlP+BHy5ks1Ehbe0W9WqLp2I2EBWPmvfmFmyskJlmSRewV3QguVrKgR81iJEc8XocybaiQsDGsGymoSyw6WUPLxVXevNmfvBvllwUg0Y+Y9RcgXH4iC1L9R7UF6mH6zfxDACi1h9VxgSWcX4skstt1mRHbpqBCiOdcKUyVLmpBsc9vURRHjSGi1ua2yLgnjSGi9P9aWbD50o4L9sYRhk6HeYsMyyArodk3uJo87pIfVU9WyyAGWatAz9+/MG6+J3qLDSvTpRVwVh5UaC2m24xbKAc84ElrC+mXcg1Tw7UEqyrhaHFgaWSHpPu+JsfAbDaxQOeARwVIXpkp2TW7umndJB2/Rt5eEdVigdbf8AQHlgCdMLZbdPu8aPabBkOZaYcS0z3tFsPqXgyKjYNlfpijQuheH1VPVsqg8LO14ZxgMyS5Cp9aOUv0yRWZH0tmPUYwZfvIkCJLzDiHHT54MtT9FUQZW/GMUWT5C9TMVBWDFPz4xLvwofksHv6VjeZcOfqQJsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsAALsFYH1j2tq/vs8a9pXV1nj39H6+oue/w9Wld72ePv0LrayR7/htbVjTWsK1pYb9njP9DCesoe/4IW1mv2+Ee0sI6zxx/RwtrNHv+RFtazV1PJuvJ4S9aDx1uyLjzeknXk8Zaskcdbsh69ekrWW/74D6wFi7hkveaPf8RasIhL1m7++I81FSzPeyPssK4kx38i7LBkH5hXxg5rmmPGDmuaXcIOayQ5/jNhh/Xo1SPrSnr8J8aBkFbWhccr68jjlTWSHp9O1rnn1SHr/kpxfCJZ1w+K4xPJurtQHJ9I1t6R4vi7jPWKUNZNUVeTPouig3+7Uh7/gaKDf1LX4Ys7nv5q3mft8fRX8z6LooPfHSmP/0jRwT8/eiXiSuv+baQ9viut6yf983eldfeqP74rrb3jI+3xXWnt7OrPvyutm+dzD0EQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBKkvo90dpmWxHzl9ue065fYUb1IDs8u54nrKquse0GpedthuavtwddslyQveqWaF83bJqasuVSBrFeuVShZVvYKsFeyvdHdMvnQJgz6rOd8HeXfRIRwI3zt4vGErWbAkJYu0YKFkNbPDCkP6knXbRcla8a+EoRAicKaVPX4Che/7A2dZeMeaBmvqapKQDZb/HsBaMVifrvhgfbhyrll4xxoKKwAsBLCQxe+xuIfCAXqsVW7egxZv8z4ArNWbbggDgokszXRDd+A+2wBYzYPF85MbXeLgHQMswAIswEIACwEswAIswEIACwEswAIswEIACwEswAIswEIACwEswAIswEIAC2kSrNn6dxEVfbAILF+XAWAtI6z5+xtqHmOF5QPWMg6FweztFUUeAizEAEtdsnTFDLAQU/OurEsD/UAIWIj+W6Gik4oLVguwkBKw5IJMnTtgIaZ5rEBGyNS5F4I1yAfTDcsPS9alGzt31wlSsyvAajosWXUKjAOhGywLV4DVeFitXHkyd+5usLaMDRZgLQOsMFuyBhYFywWWjSvAaj6s7MgXmjt3J1g2AyFgLQOs9NBn07m7wLJzBVhLACtdsmw6dwdYvtVACFhLASvZv1t17hSwsB5rBWAl2irLglUWluVACFjLASvmZNe5l4Zl7QqwlgNWmLuGF3LAsncFWMsBKy5ZdgNhOVhbtg0WYC0NrFYGFsvNFAVcAdaywAqLFawysAoMhIC1NLBSg6FoMcAq5AqwlgZWWKBzLwPLLzIQAtbywEqULPNAWBzWVjFXgLU8sEL7zr0ErGIDIWABlh2soq4AC7BsYBV2BViAZQGrYOMOWIBVEBZ2mwEsQljFB0LAAiwzrDKuAAuwTLBKNFiABVhGWFulXAEWYBlglXMFWIClh5XYpkEewAKsErB8YwALsAALASwEsAALsAALASxkIWC1gtlvUfBMNxT7aQq8Y8sDC7+lgwAWAliABViAhQAWAliABViAhQAWAliABViAhQAWAliABViAhQAWAliABViAhQAWAliABViAhQAWAliABViAhQAWAliABViAhQAWAliAtQzZoXW1kz3+La2rW7xjDcmIFtZu9vintLBe8I6tZskaebwl6xRv2EqWrN388U9RsFY0u4Qd1khy/BfCDgsFazVlyY//goEQski/ERLLQr1qXp9F0cHvjpTHP6Xo4F/gagVp7ezqj+9K6xasEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBFiP/D9B/r8g4FKcqAAAAAElFTkSuQmCC" alt="Preview of the full A to Z flash card deck in orange, purple, gold and green">
+      <h3>Flash Card Set</h3>
+      <p>Portable, colorful flash cards to make learning letters, numbers, and shapes a daily habit.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-badge">Coming Soon</div>
+      <div class="product-icon">🎮</div>
+      <h3>Interactive Games</h3>
+      <p>Digital learning activities that bring the book's characters and lessons to life on screen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL SIGNUP -->
+<section class="email-section" id="signup">
+  <h2>Stay at the Top of the Class</h2>
+  <p>Join our community of parents and educators. Get early access to new products, free resources, and exclusive updates.</p>
+
+  <div id="formWrapper">
+    <div class="email-form">
+      <input type="text" id="nameInput" placeholder="Your first name" />
+      <input type="email" id="emailInput" placeholder="Your email address" />
+    </div>
+    <div class="email-form" style="margin-top: 10px;">
+      <button onclick="handleSignup()">✨ Count Me In!</button>
+    </div>
+    <p class="form-note">🔒 No spam, ever. Unsubscribe any time. Your information stays private.</p>
+  </div>
+
+  <div class="success-msg" id="successMsg">
+    🎉 You're in! Welcome to the Top of the Class community. Watch your inbox for exciting updates!
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-label">What People Are Saying</div>
+    <div class="section-title">Early Readers Love It</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"My daughter asks for this book every night before bed. The artwork is absolutely gorgeous and she's learned so much without even realizing it!"</p>
+        <div class="testimonial-author">— Parent of a Pre-K student</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"As a kindergarten teacher, I'm always looking for engaging resources. This book hits every mark — bright, fun, and educationally solid."</p>
+        <div class="testimonial-author">— Kindergarten educator</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"We use it in our reading circle and the kids are obsessed. The characters are relatable and the lessons stick beautifully."</p>
+        <div class="testimonial-author">— Childcare center director</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Top of the <span>Class</span></div>
+  <p>For Grades Pre through K &nbsp;·&nbsp; Inspiring little learners everywhere</p>
+  <p style="margin-top: 12px;">
+    <a href="#home">Home</a> &nbsp;·&nbsp;
+    <a href="#about">About</a> &nbsp;·&nbsp;
+    <a href="#products">Products</a> &nbsp;·&nbsp;
+    <a href="#signup">Stay Connected</a>
+  </p>
+  <p style="margin-top: 20px; font-size: 12px; color: #475569;">© 2025 Top of the Class. All rights reserved.</p>
+</footer>
+
+<script>
+function handleSignup() {
+  const name = document.getElementById('nameInput').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('emailInput').style.borderColor = '#F87171';
+    document.getElementById('emailInput').focus();
+    return;
+  }
+  document.getElementById('emailInput').style.borderColor = '';
+  document.getElementById('formWrapper').style.display = 'none';
+  const msg = document.getElementById('successMsg');
+  msg.style.display = 'block';
+  if (name) {
+    msg.innerHTML = '🎉 Welcome, ' + name + '! You\'re in the Top of the Class community now. Watch your inbox!';
+  }
+}
+document.getElementById('emailInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handleSignup();
+});
+</script>
+</body>
+</html>
